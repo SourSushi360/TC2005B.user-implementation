@@ -31,8 +31,9 @@ const Dashboard = () => {
                 display: 'flex',
                 flexWrap: 'wrap',
                 gap: '10px',
-                justifyContent: 'center', // Optional: to center the cards horizontally
-                padding: '10px'
+                justifyContent: 'center',
+                padding: '10px',
+                height:'100%',
             }}>
                 {filteredUsers.map((user) => (
                     <div key={user.id} style={{ padding: '1%' }}>

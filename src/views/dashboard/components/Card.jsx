@@ -9,24 +9,46 @@ const Card = ({user}) => {
 
     return (
         <div style={{
-            width: '300px', 
-            height: '100px', 
-            boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.1)',
-            backgroundColor: 'white',
-            borderRadius: '20px', 
-            display: 'flex',
-            alignItems:'center',
-            flexDirection: 'row', }}
+                background:'#4258ff',
+                height:'150px',
+                width:'250px',
+                borderRadius:'20px',
+                padding:'15px',
+                color:'white',
+                cursor:'pointer',
+            }}
         onClick={handleClick}>
-            <div>
-                <img src={userImg} width={50} alt="userImage.svg" style={{
-                    marginLeft:'10px'
+            <div style={{
+                display:'flex',
+                flexDirection:'row',
+                gap:'10px',
+            }}>
+                <img src={userImg} width={100} alt="userImage.svg" style={{
+                    backgroundColor:'white',
+                    borderRadius:'100%',
+                    border:'#0013A5 solid 3px',
                 }} />
+                <div style={{
+                    backgroundColor:'#0013A5',
+                    borderRadius:'20px',
+                    width:'100%',
+                    height:'100px',
+                    display:'flex',
+                    alignItems:'center',
+                    fontSize:'18px',
+                    fontWeight:'600',
+                    padding:'0 10px 0 10px',
+                }}>{ user.name }</div>
             </div>
-            <div style={{ paddingLeft:'20px', userSelect:'none' }}>
-                <p>{ user.name }</p>
-                <br/>
-                <p>{ user.email }</p>
+            <div style={{
+            }}>
+                <div style={{
+                    fontSize:'16px',
+                    padding:'10px',
+                    backgroundColor:'#0013A5',
+                    borderRadius:'20px',
+                    marginTop:'10px',
+                }}>{ user.email }</div>
             </div>
         </div>
     )
