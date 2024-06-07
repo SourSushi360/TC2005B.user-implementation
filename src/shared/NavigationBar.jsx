@@ -12,37 +12,37 @@ const NavigationBar = ({ children, onFilterChange }) => {
     };
 
     return (
-        <div style={{
-            width:'100%',
-            height:'40px',
-            backgroundColor:'#0013A5',
-            color:'white',
-            fontFamily:'sans-serif',
-        }}>
+        <div style={{ fontFamily:'sans-serif',}}>
             <div style={{
                 display:'flex',
                 flexDirection:'row',
-                paddingTop:'5px',
-                marginLeft:'10px',
-                fontSize:'25px'
+                padding:'10px 0 0 10px',
+                fontSize:'20px',
+                fontWeight:'600',
+                color:'white',
+                height:'5vh',
+                backgroundColor:'#0013A5',
+                letterSpacing:'3px',
             }}>
                 <div onClick={() => handleNavigate("")} style={{
                     display:'flex',
                     flexDirection:'row',
+                    cursor:'pointer',
                 }}>
-                    <IoHomeOutline style={{marginRight:'5px'}} />
-                    <p style={{marginRight:'15px'}}>Dashboard</p>
+                    <IoHomeOutline style={{marginRight:'10px', fontSize:'25px', margin:'-3px 10px 0 0'}} />
+                    <p style={{marginRight:'25px'}}>Dashboard</p>
                 </div>
-                <p onClick={() => handleNavigate("register")} style={{marginRight:'15px'}}>Registro</p>
+                <p onClick={() => handleNavigate("register")} style={{marginRight:'25px', cursor:'pointer',}}>Registro</p>
                 <input 
                     type="text" 
                     placeholder="Filtrar por nombre" 
                     onChange={handleInputChange} 
                     style={{
-                        border:'2px black solid',
-                        width:'120px',
-                        textAlign:'center',
-                        borderRadius:'10px',
+                        height:'3vh',
+                        borderRadius:'5px',
+                        border:'transparent',
+                        padding:'3px 0 3px 5px',
+                        marginTop:'-3px',
                     }} 
                 />
             </div>

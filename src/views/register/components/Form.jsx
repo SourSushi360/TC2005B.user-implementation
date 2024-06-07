@@ -32,7 +32,7 @@ const Form = () => {
         alignItems:'center',
         padding:'5%',
         color:'white',
-        fontFamily:'sans-serif'
+        fontFamily:'sans-serif',
        }}>
         <h1 style={{
             letterSpacing:'0.1em',
