@@ -49,7 +49,7 @@ const PrevDescription = ({ descriptions }) => {
               height: '50%',
               boxSizing: 'border-box',
             }}>
-              <div style={{fontWeight:'600', marginBottom:'10px'}}>Prescripción:</div>
+              <div style={{fontWeight:'600', marginBottom:'10px'}}>Respuesta:</div>
               {des.prescription}
             </div>
           </div>

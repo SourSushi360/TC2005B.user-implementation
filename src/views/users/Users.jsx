@@ -33,12 +33,16 @@ const Users = () => {
         const prompt = {
             prompt: form.description,
         }
-        const response = await fetch('http://localhost:3000/chat', {
+        const response = await fetch('http://localhost:3000/chat/gemini', {
             method:'POST',
             body: JSON.stringify(prompt),
         });
         const data = await response.json();
-        console.log(data);
+        const newForm = {
+            ...form,
+            prescription: data.response
+        }
+        setForm(newForm);
 
         return data;
     }
@@ -105,11 +109,14 @@ const Users = () => {
                             }}>
                             <div style={{
                                 marginBottom:'10px',
-                            }}>Description</div>
+                            }}>Descripción</div>
                             <textarea label="Description" value={form.description}
                             name="description" onChange={handleInputChange} style={{
                                 flex:'1',
-                                width:'90%'
+                                width:'90%',
+                                padding:'20px',
+                                boxSizing: 'border-box',
+                                borderRadius:'10px 10px 0 0'
                             }}></textarea>
                             <button onClick={handleSave} style={{
                                 width:'90%',
@@ -119,6 +126,7 @@ const Users = () => {
                                 height:'30px',
                                 fontWeight:'600',
                                 letterSpacing:'1px',
+                                borderRadius:'0 0 10px 10px'
                             }}>
                                 <p>Guardar</p>
                             </button>
@@ -131,11 +139,14 @@ const Users = () => {
                             }}>
                             <div style={{
                                 marginBottom:'10px',
-                            }}>Prescription</div>
+                            }}>Respuesta</div>
                             <textarea label="Prescription" value={form.prescription}
                             name="prescription" onChange={handleInputChange} style={{
                                 flex:'1',
-                                width:'90%'
+                                width:'90%',
+                                padding:'20px',
+                                boxSizing: 'border-box',
+                                borderRadius:'10px 10px 0 0'
                             }}></textarea>
                             <button onClick={handleGenerate} style={{
                                 width:'90%',
@@ -145,6 +156,7 @@ const Users = () => {
                                 height:'30px',
                                 fontWeight:'600',
                                 letterSpacing:'1px',
+                                borderRadius:'0 0 10px 10px'
                             }}>
                                 <p>Generar</p>
                             </button>
