@@ -30,39 +30,56 @@ const Users = () => {
         console.log(newForm);
     }
     const handleGenerate = async() => {
-        const prompt = {
-            prompt: form.description,
+        const { description } = form;
+        const context = "Eres un cocinero experto. Solo puedes contestar preguntas relacionadas a cocinar o nutrientes.";
+        const prompt = description;
+    
+        const body = JSON.stringify({ context, prompt });
+    
+        try {
+            const response = await fetch('http://localhost:3000/chat/gemini', {
+                method:'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body,
+            });
+            const data = await response.json();
+            
+            const newForm = {
+                ...form,
+                prescription: data.response
+            }
+            setForm(newForm);
+    
+            return data;
+        } catch (error) {
+            console.error('Error:', error);
         }
-        const response = await fetch('http://localhost:3000/chat/gemini', {
-            method:'POST',
-            body: JSON.stringify(prompt),
-        });
-        const data = await response.json();
-        const newForm = {
-            ...form,
-            prescription: data.response
-        }
-        setForm(newForm);
-
-        return data;
     }
-    const handleSave = async() => {
+    const handleSave = async () => {
         const descriptions = {
             description: form.description,
             prescription: form.prescription
+        };
+        try {
+            const response = await fetch('http://localhost:3000/description/'+id, {
+                method:'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(descriptions),
+            });
+            const data = await response.json();
+            console.log(data);
+    
+            window.location.reload();
+            
+            return data;
+        } catch (error) {
+            console.error('Error:', error);
         }
-        const response = await fetch('http://localhost:3000/description/'+id, {
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(descriptions),
-        });
-        const data = await response.json();
-        console.log(data);
-
-        return data;
-    }
+    };
     const fetchUser = async() => {
         const response = await fetch('http://localhost:3000/users/'+id);
         const data = await response.json();
