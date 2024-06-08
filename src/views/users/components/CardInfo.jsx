@@ -3,28 +3,43 @@ import userImg from '../../../assets/user_image.svg';
 const CardInfo = ({user}) => {
     return (
         <div style={{
+            background:'#4258ff',
+            height:'87vh',
             width:'300px',
-            height:'85vh',
-            backgroundColor:'white',
-            boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.1)',
-            borderRadius:'10px',
+            padding:'20px',
+            display:'flex',
+            alignItems:'center',
+            flexDirection:'column',
         }}>
             <img src={userImg} width={200} alt="" style={{
-                margin:'10px 0 0 10px',
+                background:'white',
+                border:'#0013A5 solid 5px',
+                borderRadius:'100%',
             }} />
-            <div>
+            <div style={{
+                color:'white',
+                background:'#0013A5',
+                borderRadius:'20px',
+                padding:'20px',
+                marginTop:'20px',
+                fontWeight:'600',
+                letterSpacing:'2px',
+                lineHeight:'20px',
+                width:'80%',
+                height:'100%'
+            }}>
                 <p>Nombre</p>
-                <p>{user.name}</p>
+                <p style={{margin:'0 0 5px 10px', fontSize:'12px'}}>{user.name}</p>
                 <p>Email</p>
-                <p>{user.email}</p>
+                <p style={{margin:'0 0 5px 10px', fontSize:'12px'}}>{user.email}</p>
                 <p>Edad</p>
-                <p>{user.age}</p>
+                <p style={{margin:'0 0 5px 10px', fontSize:'12px'}}>{user.age}</p>
                 <p>Sexo</p>
-                <p>{user.sex}</p>
+                <p style={{margin:'0 0 5px 10px', fontSize:'12px'}}>{user.sex}</p>
                 <p>Matrícula</p>
-                <p>{user.student_id}</p>
+                <p style={{margin:'0 0 5px 10px', fontSize:'12px'}}>{user.student_id}</p>
                 <p>Rol</p>
-                <p>{user.role}</p>
+                <p style={{margin:'0 0 5px 10px', fontSize:'12px'}}>{user.role}</p>
             </div>
         </div>
     )

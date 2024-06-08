@@ -45,6 +45,7 @@ const Users = () => {
     const handleSave = async() => {
         const descriptions = {
             description: form.description,
+            prescription: form.prescription
         }
         const response = await fetch('http://localhost:3000/description/'+id, {
             method:'POST',
@@ -75,35 +76,80 @@ const Users = () => {
             <div style={{
                 display:'flex',
                 flexDirection:'row',
-                marginTop:'2vh',
+                overflow:'hidden',
             }}>
-                <div style={{
-                    display:'flex',
-                    height:'92vh',
-                    width:'350px',
-                    alignItems:'center',
-                    justifyContent:'center',
-                }}>
+                <div>
                     <CardInfo user={user}/>
                 </div>
-                <div>
+                <div style={{
+                    display:'flex',
+                    flexDirection:'column',
+                }}>
                     <PrevDescription descriptions={descriptions} />
-                    <div>
-                        Description
-                        <textarea label="Description" value={form.description}
-                        name="description" onChange={handleInputChange}></textarea>
+                    <div style={{
+                        display:'flex',
+                        flexDirection:'row',
+                        padding:'10px',
+                        gap:'20px',
+                        background:'#0013A5',
+                        flex:'1',
+                        color:'white',
+                        fontWeight:'900',
+                        letterSpacing:'2px',
+                        }}>
+                        <div style={{
+                            display:'flex',
+                            flexDirection:'column',
+                            width:'50%',
+                            alignItems:'center',
+                            }}>
+                            <div style={{
+                                marginBottom:'10px',
+                            }}>Description</div>
+                            <textarea label="Description" value={form.description}
+                            name="description" onChange={handleInputChange} style={{
+                                flex:'1',
+                                width:'90%'
+                            }}></textarea>
+                            <button onClick={handleSave} style={{
+                                width:'90%',
+                                border:'none',
+                                background:'#4258ff',
+                                color:'white',
+                                height:'30px',
+                                fontWeight:'600',
+                                letterSpacing:'1px',
+                            }}>
+                                <p>Guardar</p>
+                            </button>
+                        </div>
+                        <div style={{
+                            display:'flex',
+                            flexDirection:'column',
+                            width:'50%',
+                            alignItems:'center',
+                            }}>
+                            <div style={{
+                                marginBottom:'10px',
+                            }}>Prescription</div>
+                            <textarea label="Prescription" value={form.prescription}
+                            name="prescription" onChange={handleInputChange} style={{
+                                flex:'1',
+                                width:'90%'
+                            }}></textarea>
+                            <button onClick={handleGenerate} style={{
+                                width:'90%',
+                                border:'none',
+                                background:'#4258ff',
+                                color:'white',
+                                height:'30px',
+                                fontWeight:'600',
+                                letterSpacing:'1px',
+                            }}>
+                                <p>Generar</p>
+                            </button>
+                        </div>
                     </div>
-                    <div>
-                        Prescription
-                        <textarea label="Prescription" value={form.prescription}
-                        name="prescription" onChange={handleInputChange}></textarea>
-                    </div>
-                    <button onClick={handleGenerate}>
-                        <p>Generar</p>
-                    </button>
-                    <button onClick={handleSave}>
-                        <p>Guardar</p>
-                    </button>
                 </div>
             </div>
         </NavigationBar>

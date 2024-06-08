@@ -232,7 +232,8 @@ const Form = () => {
             alignItems:'center',
             display:'flex',
             justifyContent:'center',
-            fontWeight:'800'
+            fontWeight:'800',
+            lineHeight:'80px',
         }}>
             Submit
         </div>

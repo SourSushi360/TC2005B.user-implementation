@@ -7,7 +7,7 @@ const Register = () => {
             <div style={{
                 display:'flex',
                 flexDirection:'row',
-                maxHeight:'95vh',
+                maxHeight:'93.35vh',
             }}>
                 <Form />
                 <div style={{

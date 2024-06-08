@@ -12,7 +12,9 @@ const NavigationBar = ({ children, onFilterChange }) => {
     };
 
     return (
-        <div style={{ fontFamily:'sans-serif',}}>
+        <div style={{
+            fontFamily:'sans-serif',
+            }}>
             <div style={{
                 display:'flex',
                 flexDirection:'row',
