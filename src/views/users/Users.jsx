@@ -57,6 +57,35 @@ const Users = () => {
             console.error('Error:', error);
         }
     }
+    const handleRAG = async() => {
+        const { description } = form;
+        const context = "en qué versión metieron el modo supervivencia?";
+        const prompt = description;
+    
+        const body = JSON.stringify({ context, prompt });
+    
+        try {
+            const response = await fetch('http://localhost:3000/chat/nearbyy', {
+                method:'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body,
+            });
+            const data = await response.json();
+            
+            const newForm = {
+                ...form,
+                prescription: data.response
+            }
+            setForm(newForm);
+    
+            console.log(data);
+            return data;
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
     const handleSave = async () => {
         const descriptions = {
             description: form.description,
@@ -135,18 +164,36 @@ const Users = () => {
                                 boxSizing: 'border-box',
                                 borderRadius:'10px 10px 0 0'
                             }}></textarea>
-                            <button onClick={handleSave} style={{
+                            <div style={{
+                                display:'flex',
+                                flexDirection:'row',
                                 width:'90%',
-                                border:'none',
-                                background:'#4258ff',
-                                color:'white',
-                                height:'30px',
-                                fontWeight:'600',
-                                letterSpacing:'1px',
-                                borderRadius:'0 0 10px 10px'
                             }}>
-                                <p>Guardar</p>
-                            </button>
+                                <button onClick={handleGenerate} style={{
+                                    width:'90%',
+                                    border:'none',
+                                    background:'#4258ff',
+                                    color:'white',
+                                    height:'30px',
+                                    fontWeight:'600',
+                                    letterSpacing:'1px',
+                                    borderRadius:'0 0 0 10px'
+                                }}>
+                                    <p>Gemini</p>
+                                </button>
+                                <button onClick={handleRAG} style={{
+                                    width:'90%',
+                                    border:'none',
+                                    background:'#4258ff',
+                                    color:'white',
+                                    height:'30px',
+                                    fontWeight:'600',
+                                    letterSpacing:'1px',
+                                    borderRadius:'0 0 10px 0'
+                                }}>
+                                    <p>RAG</p>
+                                </button>
+                            </div>
                         </div>
                         <div style={{
                             display:'flex',
@@ -165,7 +212,7 @@ const Users = () => {
                                 boxSizing: 'border-box',
                                 borderRadius:'10px 10px 0 0'
                             }}></textarea>
-                            <button onClick={handleGenerate} style={{
+                            <button onClick={handleSave} style={{
                                 width:'90%',
                                 border:'none',
                                 background:'#4258ff',
@@ -175,7 +222,7 @@ const Users = () => {
                                 letterSpacing:'1px',
                                 borderRadius:'0 0 10px 10px'
                             }}>
-                                <p>Generar</p>
+                                <p>Guardar</p>
                             </button>
                         </div>
                     </div>
