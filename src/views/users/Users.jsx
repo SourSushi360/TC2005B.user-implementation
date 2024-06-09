@@ -59,10 +59,9 @@ const Users = () => {
     }
     const handleRAG = async() => {
         const { description } = form;
-        const context = "en qué versión metieron el modo supervivencia?";
         const prompt = description;
     
-        const body = JSON.stringify({ context, prompt });
+        const body = JSON.stringify({ context });
     
         try {
             const response = await fetch('http://localhost:3000/chat/nearbyy', {
