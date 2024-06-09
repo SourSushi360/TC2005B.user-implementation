@@ -61,7 +61,7 @@ const Users = () => {
         const { description } = form;
         const prompt = description;
     
-        const body = JSON.stringify({ context });
+        const body = JSON.stringify({ prompt });
     
         try {
             const response = await fetch('http://localhost:3000/chat/nearbyy', {
